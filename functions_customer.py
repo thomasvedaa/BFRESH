@@ -1,3 +1,4 @@
+import sqlite3
 def add_customer_to_database(connection):
     cursor = connection.cursor()
     print("Add a customer")
