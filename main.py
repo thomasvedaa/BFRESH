@@ -1,6 +1,10 @@
 import sqlite3
 from menu_functions import *
-from functions_database import *
+from functions_customer import *
+from functions_car import *
+from car_to_customer_functions import *
+
+
 connection=sqlite3.connect('rental_database.sqlite')
 while True:
     print("1. Add/Modify car\n2. Add/Modify customer\n3. Assign car to customer\n4. Unassign car to customer"
@@ -10,7 +14,7 @@ while True:
     if choice==1:
         modify_car_menu()
     if choice==2:
-        pass
+        modify_customer_menu()
     if choice==3:
         pass
     if choice==4:
