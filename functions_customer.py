@@ -9,4 +9,10 @@ def add_customer_to_database(connection):
     connection.commit()
     customer_id=cursor.lastrowid
     print(f'Added customer: Id: {customer_id}, name: {name}, adress: {adress}, phone number: {telephone_number}')
-    
+
+def edit_customer():
+    pass
+
+
+def remove_customer():
+    pass
