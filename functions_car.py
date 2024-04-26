@@ -12,3 +12,8 @@ def add_car_to_database(connection):
     print(f'Added car: Id: {car_id}, registration number: {reg_nr}, price: {price}, brand: {brand}')
 
 
+def edit_car():
+    pass
+
+def remove_car():
+    pass
