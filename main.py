@@ -27,3 +27,5 @@ while True:
         pass
     if choice==8:
         break
+
+print("goodbye hehegit")
