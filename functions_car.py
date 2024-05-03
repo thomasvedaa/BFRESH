@@ -14,7 +14,7 @@ def add_car_to_database():
                    (reg_nr, state, price, brand))
     connection.commit()
     car_id = cursor.lastrowid
-    print(f'Added car: Id: {car_id}, registration number: {reg_nr}, price: {price}, brand: {brand}')
+    print(f'Added car: Id: {car_id}, registration number: {reg_nr}, price: ${price}, brand: {brand}')
 
 
 def edit_car():
