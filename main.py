@@ -1,10 +1,6 @@
 import sqlite3
 from menu_functions import *
-from functions_customer import *
-from functions_car import *
-from assign_function import *
 from functions_stats import *
-
 
 connection=sqlite3.connect('rental_database.sqlite')
 while True:

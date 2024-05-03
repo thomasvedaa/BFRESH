@@ -1,6 +1,10 @@
 import sqlite3
-def add_customer_to_database(connection):
-    cursor = connection.cursor()
+
+connection=sqlite3.connect('rental_database.sqlite')
+cursor = connection.cursor()
+
+
+def add_customer_to_database():
     print("Add a customer")
     social_security_number = input("Enter social security number: ")
     name = input("Enter customer name: ")
@@ -14,6 +18,11 @@ def add_customer_to_database(connection):
 def edit_customer():
     pass
 
-
 def remove_customer():
-    pass
+    customer_id = int(input("Which customer do you want to remove?"))
+    cursor.execute('DELETE FROM Customer WHERE Customer_ID = ?', (customer_id,))
+    connection.commit()
+    if cursor.rowcount > 0:
+        print(f'Customer with ID {customer_id} was removed')
+    else:
+        print('Customer not found')
