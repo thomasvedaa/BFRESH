@@ -1,6 +1,6 @@
 import sqlite3
 
-connection = sqlite3.connect('rental_database.sqlite')
+connection=sqlite3.connect('rental_database.sqlite')
 cursor = connection.cursor()
 
 
@@ -14,7 +14,7 @@ def add_car_to_database():
                    (reg_nr, state, price, brand))
     connection.commit()
     car_id = cursor.lastrowid
-    print(f'Added car: Id: {car_id}, registration number: {reg_nr}, price: ${price}, brand: {brand}')
+    print(f'Added car: Id: {car_id}, registration number: {reg_nr}, price: ${price}, brand: {brand}\n')
 
 
 def edit_car():
@@ -35,14 +35,14 @@ def edit_car():
                        (reg_nr, state, price, brand,car_id,))
         connection.commit()
         print(
-            f'Updated car: Id: {car_id},state of car: {state} registration number: {reg_nr}, price: {price}, brand: {brand}')
+            f'Updated car: Id: {car_id},state of car: {state} registration number: {reg_nr}, price: {price}, brand: {brand}\n')
 
 
 def remove_car():
-    car_id = int(input("Which car do you want to remove?"))
+    car_id = int(input("Which car do you want to remove?\n"))
     cursor.execute('DELETE FROM Customer WHERE Customer_ID = ?', (car_id,))
     connection.commit()
     if cursor.rowcount > 0:
-        print(f'Car with ID {car_id} was removed')
+        print(f'Car with ID {car_id} was removed\n')
     else:
-        print('Car not found')
+        print('Car not found\n')

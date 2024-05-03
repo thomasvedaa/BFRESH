@@ -5,7 +5,7 @@ from functions_stats import *
 
 def modify_car_menu():
     while True:
-        modify_car = int(input("1. Add car \n2. Edit car \n3. Remove car \n4. Exit"))
+        modify_car = int(input("1. Add car \n2. Edit car \n3. Remove car \n4. Exit\n"))
         if modify_car == 1:
             add_car_to_database()
         elif modify_car == 2:
@@ -20,7 +20,7 @@ def modify_car_menu():
 
 def modify_customer_menu():
     while True:
-        modify_customer = int(input("1. Add customer \n2. Edit customer \n3. Remove customer \n4. Exit"))
+        modify_customer = int(input("1. Add customer \n2. Edit customer \n3. Remove customer \n4. Exit\n"))
         if modify_customer == 1:
             add_customer_to_database()
         elif modify_customer == 2:
@@ -35,7 +35,7 @@ def modify_customer_menu():
 
 def search_customer():
     while True:
-        search_choice = int(input("1. Search for a customer \n2. Exit"))
+        search_choice = int(input("1. Search for a customer \n2. Exit\n"))
         if search_choice == 1:
             pass
         elif search_choice == 2:
@@ -47,7 +47,7 @@ def search_customer():
 def show_stats_menu():
     while True:
         stats_choice = int(input(
-            "1. Number of customers \n2. Number of cars \n3. Number of active rentals \n4. Number of completed rentals \n5. Exit \n\n"))
+            "1. Number of customers \n2. Number of cars \n3. Number of active rentals \n4. Number of completed rentals \n5. Exit \n"))
         if stats_choice == 1:
             count_customers(connection)
         elif stats_choice == 2:

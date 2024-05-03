@@ -13,7 +13,7 @@ def add_customer_to_database():
     cursor.execute('INSERT INTO Customer (Social_security_number,Name,Adress,Telephone_number) VALUES (?,?,?,?)',(social_security_number, name, adress, telephone_number))
     connection.commit()
     customer_id=cursor.lastrowid
-    print(f'Added customer: Id: {customer_id}, name: {name}, adress: {adress}, phone number: {telephone_number}')
+    print(f'Added customer: Id: {customer_id}, name: {name}, adress: {adress}, phone number: {telephone_number}\n')
 
 def edit_customer():
     customer_id = int(input("Enter customer to edit: "))
@@ -24,7 +24,7 @@ def edit_customer():
         return
     else:
         print(
-            f'Found customer: Id: {customer[0]}, social security number: {customer[1]}, name: {customer[2]}, address: {customer[3]}, telephone number: {customer[4]}')
+            f'Found customer: Id: {customer[0]}, social security number: {customer[1]}, name: {customer[2]}, address: {customer[3]}, telephone number: {customer[4]}\n')
         social_number = input("Update social security number: ")
         name = input("Update name: ")
         adress = input("Update address: ")
@@ -36,10 +36,10 @@ def edit_customer():
             f'Updated customer: Id: {customer_id}, name: {name}, social security number: {social_number}, address: {adress}, telephone number: {phone_number}')
 
 def remove_customer():
-    customer_id = int(input("Which customer do you want to remove?"))
+    customer_id = int(input("Which customer do you want to remove?\n"))
     cursor.execute('DELETE FROM Customer WHERE Customer_ID = ?', (customer_id,))
     connection.commit()
     if cursor.rowcount > 0:
-        print(f'Customer with ID {customer_id} was removed')
+        print(f'Customer with ID {customer_id} was removed\n')
     else:
-        print('Customer not found')
+        print('Customer not found\n')
