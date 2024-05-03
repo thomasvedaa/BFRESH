@@ -2,7 +2,8 @@ import sqlite3
 from menu_functions import *
 from functions_customer import *
 from functions_car import *
-from car_to_customer_functions import *
+from assign_function import *
+from functions_stats import *
 
 
 connection=sqlite3.connect('rental_database.sqlite')
@@ -20,7 +21,7 @@ while True:
     if choice==4:
         pass
     if choice==5:
-        pass
+        show_stats_menu()
     if choice==6:
         pass
     if choice==7:
@@ -28,4 +29,3 @@ while True:
     if choice==8:
         break
 
-print("goodbye hehegit")

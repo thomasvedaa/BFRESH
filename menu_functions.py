@@ -1,7 +1,9 @@
 from functions_customer import *
 from functions_car import *
+from functions_stats import *
 
-connection=sqlite3.connect('rental_database.sqlite')
+connection = sqlite3.connect('rental_database.sqlite')
+
 
 def modify_car_menu():
     while True:
@@ -12,10 +14,11 @@ def modify_car_menu():
             pass
         elif modify_car == 3:
             pass
-        elif modify_car==4:
+        elif modify_car == 4:
             break
         else:
             print("Enter a valid number")
+
 
 def modify_customer_menu():
     while True:
@@ -26,7 +29,36 @@ def modify_customer_menu():
             pass
         elif modify_customer == 3:
             pass
-        elif modify_customer==4:
+        elif modify_customer == 4:
+            break
+        else:
+            print("Enter a valid number")
+
+
+def search_customer():
+    while True:
+        search_choice = int(input("1. Search for a customer \n2. Exit"))
+        if search_choice == 1:
+            pass
+        elif search_choice == 2:
+            break
+        else:
+            print("Enter a valid number")
+
+
+def show_stats_menu():
+    while True:
+        stats_choice = int(input(
+            "1. Number of customers \n2. Number of cars \n3. Number of active rentals \n4. Number of completed rentals \n5. Exit \n\n"))
+        if stats_choice == 1:
+            count_customers(connection)
+        elif stats_choice == 2:
+            count_cars(connection)
+        elif stats_choice == 3:
+            pass
+        elif stats_choice == 4:
+            pass
+        elif stats_choice==5:
             break
         else:
             print("Enter a valid number")
