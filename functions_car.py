@@ -26,15 +26,14 @@ def edit_car():
         return
     else:
         print(
-            f'Found car: Id: {car[0]}, state of car: {car[2]}, registration number: {car[1]}, price: {car[3]}, brand: {car[4]}')
+            f'Found car: Id: {car[0]}, registration number: {car[1]}, state of car: {car[2]},  price: ${car[3]}, brand: {car[4]}')
         reg_nr = input("Update registration number: ")
         state = input("Update state of the car. From 1 to 10: ")
         price = input("Update estimated price of the car (in USD): ")
         brand = input("Update brand: ")
-        cursor.execute('UPDATE Car SET Registration_number = ?, State = ?, Price = ?, Brand = ?',
-                       (reg_nr, state, price, brand))
+        cursor.execute('UPDATE Car SET Registration_number = ?, State = ?, Price_range = ?, Brand = ? WHERE Car_ID = ?',
+                       (reg_nr, state, price, brand,car_id,))
         connection.commit()
-        car_id = ID
         print(
             f'Updated car: Id: {car_id},state of car: {state} registration number: {reg_nr}, price: {price}, brand: {brand}')
 
