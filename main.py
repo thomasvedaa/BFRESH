@@ -7,7 +7,7 @@ while True:
     choice= int(input())
 
     if choice==1:
-        modify_car_menu()
+        car_menu.modify_car_menu()
     if choice==2:
         customer_menu.modify_customer_menu()
     if choice==3:
