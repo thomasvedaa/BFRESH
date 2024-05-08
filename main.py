@@ -1,6 +1,5 @@
 import sqlite3
 from menu_functions import *
-from functions_stats import *
 
 while True:
     print("1. Add/Modify car\n2. Add/Modify customer\n3. Assign car to customer\n4. Unassign car to customer"
@@ -10,7 +9,7 @@ while True:
     if choice==1:
         modify_car_menu()
     if choice==2:
-        modify_customer_menu()
+        customer_menu.modify_customer_menu()
     if choice==3:
         pass
     if choice==4:

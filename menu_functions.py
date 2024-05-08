@@ -1,6 +1,9 @@
 from functions_customer import *
 from functions_car import *
 from functions_stats import *
+from assign_function import *
+
+db = 'rental_database.sqlite'
 
 
 def modify_car_menu():
@@ -18,19 +21,7 @@ def modify_car_menu():
             print("Enter a valid number")
 
 
-def modify_customer_menu():
-    while True:
-        modify_customer = int(input("1. Add customer \n2. Edit customer \n3. Remove customer \n4. Exit\n"))
-        if modify_customer == 1:
-            add_customer_to_database()
-        elif modify_customer == 2:
-            edit_customer()
-        elif modify_customer == 3:
-            remove_customer()
-        elif modify_customer == 4:
-            break
-        else:
-            print("Enter a valid number")
+customer_menu = customers(db)
 
 
 def search_customer():
