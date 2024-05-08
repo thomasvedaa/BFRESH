@@ -15,7 +15,7 @@ while True:
     if choice==4:
         pass
     if choice==5:
-        show_stats_menu()
+        stats.show_stats_menu()
     if choice==6:
         pass
     if choice==7:
@@ -23,3 +23,4 @@ while True:
     if choice==8:
         break
 
+print("hello")
