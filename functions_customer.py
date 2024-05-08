@@ -1,7 +1,7 @@
 import sqlite3
 
 
-class customers:
+class Customers:
     def __init__(self,db):
         self.connection = sqlite3.connect(db)
         self.cursor = self.connection.cursor()
