@@ -10,6 +10,7 @@ db = 'rental_database.sqlite'
 car_menu= Cars(db)
 customer_menu = Customers(db)
 stats=Stats(db)
+assign_car=Assign_car(db)
 
 
 def search_customer():
