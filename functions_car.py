@@ -44,7 +44,7 @@ class Cars:
 
     def remove_car(self):
         car_id = int(input("Which car do you want to remove?\n"))
-        self.cursor.execute('DELETE FROM Customer WHERE Customer_ID = ?', (car_id,))
+        self.cursor.execute('DELETE FROM Car WHERE Car_ID = ?', (car_id,))
         self.connection.commit()
         if self.cursor.rowcount > 0:
             print(f'Car with ID {car_id} was removed\n')
