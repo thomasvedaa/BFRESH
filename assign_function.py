@@ -23,6 +23,10 @@ class Assign_car:
 
         while True:
             car_choice=int(input("Which car do you want?\n"))
+            Start_date=input('Enter start date: ')
+            End_date=input('Enter end date: ')
+            self.cursor.execute('SELECT * FROM Car')
+            car=self.cursor.fetchone()
             if car_choice > car[0]:
                 print("Enter a valid ID\n")
             else:
