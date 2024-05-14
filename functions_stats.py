@@ -15,6 +15,10 @@ class Stats:
         car_count=self.cursor.fetchall()
         print(f'There are {car_count[0][0]} cars')
 
+    def count_active_rentals(self):
+        self.cursor.execute('SELECT COUNT(Rental_ID) FROM Active_rental')
+        rental_count=self.cursor.fetchall()
+        print(f'There are {rental_count[0][0]} active rentals')
     def show_stats_menu(self):
         while True:
             stats_choice = int(input(
@@ -24,7 +28,7 @@ class Stats:
             elif stats_choice == 2:
                 self.count_cars()
             elif stats_choice == 3:
-                pass
+                self.count_active_rentals()
             elif stats_choice == 4:
                 pass
             elif stats_choice == 5:
