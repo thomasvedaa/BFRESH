@@ -1,4 +1,5 @@
 import sqlite3
+
 class Assign_car:
 
     def __init__(self,db):
@@ -64,7 +65,8 @@ class Assign_car:
                 print('No cars available')
             for car in cars:
                 print(
-                    f'Car: Id: {car[0]}, registration number: {car[1]}, state of car: {car[2]},  price: ${car[3]}, brand: {car[4]}')
+                    f'Car: Id: {car[0]}, registration number: {car[1]}, state of car: {car[2]},  price: ${car[3]}, '
+                    f'brand: {car[4]}')
 
         while True:
             car_choice = int(input("Which car do you want to unassign?\n"))
@@ -75,6 +77,10 @@ class Assign_car:
                 self.connection.commit()
                 print('Car successfully unassigned')
                 break
+
+
+
+
 
     def assign_menu(self):
         while True:
