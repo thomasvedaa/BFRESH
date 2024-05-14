@@ -1,4 +1,6 @@
 import sqlite3
+from datetime import datetime
+
 
 class Stats:
 
@@ -19,6 +21,12 @@ class Stats:
         self.cursor.execute('SELECT COUNT(Rental_ID) FROM Active_rental')
         rental_count=self.cursor.fetchall()
         print(f'There are {rental_count[0][0]} active rentals')
+
+    def count_completed_rentals(self):
+        current_date = datetime.now().strftime('%Y-%m-%d')
+        self.cursor.execute('SELECT COUNT(Rental_ID) FROM Active_rental WHERE End_date < ?', (current_date,))
+        completed_rentals = self.cursor.fetchone()
+        print(f'There are {completed_rentals[0]} completed rentals')
     def show_stats_menu(self):
         while True:
             stats_choice = int(input(
@@ -30,7 +38,7 @@ class Stats:
             elif stats_choice == 3:
                 self.count_active_rentals()
             elif stats_choice == 4:
-                pass
+                self.count_completed_rentals()
             elif stats_choice == 5:
                 break
             else:
