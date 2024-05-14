@@ -49,24 +49,19 @@ class Assign_car:
 
     def unassign_car_to_customer(self):
         customer_ssn = int(input('Enter social security number to identify yourself: '))
-        self.cursor.execute('SELECT * FROM Customer WHERE Social_security_number=?', (customer_ssn,))
+        self.cursor.execute('SELECT * FROM Active_rental,Customer WHERE Active_rental.Customer_ID=Customer.Customer_ID AND Customer.Social_security_number=?', (customer_ssn,))
         customer = self.cursor.fetchone()
         customer_id = customer[0]
+
         if customer is None:
             print("No customer with that social security number")
-
         else:
             print(f'Found customer: Id: {customer[0]}, social security number: {customer[1]}, name: {customer[2]}, '
                   f'address: {customer[3]}, telephone number: {customer[4]}\n')
+            print(f'Car: Id: {car[0]}, registration number: {car[1]}, state of car: {car[2]},  price: ${car[3]}, brand: {car[4]}')
             print('Select a car: ')
-            self.cursor.execute('SELECT * FROM Car')
+            self.cursor.execute('SELECT * FROM Car WHERE car[0]')
             cars = self.cursor.fetchall()
-            if not cars:
-                print('No cars available')
-            for car in cars:
-                print(
-                    f'Car: Id: {car[0]}, registration number: {car[1]}, state of car: {car[2]},  price: ${car[3]}, '
-                    f'brand: {car[4]}')
 
         while True:
             car_choice = int(input("Which car do you want to unassign?\n"))
