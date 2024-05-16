@@ -18,12 +18,12 @@ class Assign_car:
                   f'address: {customer[3]}, telephone number: {customer[4]}\n')
 
         customer_choice = int(input('Enter ID of the customer you want: '))
-        self.cursor.execute('Select * FROM Customer WHERE Customer_ID=?',(customer_choice))
+        self.cursor.execute('SELECT * FROM Customer WHERE Customer_ID=?',(customer_choice,))
         chosen_customer=self.cursor.fetchone()
         customer_id=chosen_customer[0]
 
-        car_choice=input('Enter the brand of the car you want')
-        self.cursor.execute('SELECT * FROM Car WHERE Brand LIKE ?',('%'+car_choice+'%',))
+        car_brand_choice=input('Enter the brand of the car you want')
+        self.cursor.execute('SELECT * FROM Car WHERE Brand LIKE ?',('%'+car_brand_choice+'%',))
         cars=self.cursor.fetchall()
         if not cars:
             print('No cars')
@@ -33,6 +33,10 @@ class Assign_car:
             print(
                 f'Car: Id: {car[0]}, registration number: {car[1]}, state of car: {car[2]},  price: ${car[3]}, brand: {car[4]}')
 
+        car_choice=int(input('Enter ID of the car you want'))
+        self.cursor.execute('SELECT * FROM Car WHERE Car_ID=? ',(car_choice,))
+        chosen_car=self.cursor.fetchone()
+        car=
 
 
     def unassign_car_to_customer(self):
