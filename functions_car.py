@@ -19,7 +19,7 @@ class Cars:
                             (reg_nr, brand, model, price))
         self.connection.commit()
         car_id = self.cursor.lastrowid
-        print(f'Added car: Id: {car_id}, registration number: {reg_nr}, brand: {brand} model: {model}, price: ${price}\n')
+        print(f'Added car: Id: {car_id}, registration number: {reg_nr}, brand: {brand}, model: {model}, price: ${price}\n')
 
     def edit_car(self):
         car_id = int(input("Give a valid Car ID to search after: "))
