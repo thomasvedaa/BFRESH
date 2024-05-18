@@ -73,8 +73,9 @@ class Assign_car:
             print(f'Rental ID: {rentals[0]} Car ID:{rentals[1]} Customer ID: {rentals[2]} Start date: {rentals[3]} End date{rentals[4]}')
 
         unassign_car=int(input('Enter the Rental ID of the car you want to unassign'))
-        self.cursor.execute('DELETE FROM Active_rental WHERE Rental_ID=')
-
+        self.cursor.execute('DELETE FROM Active_rental WHERE Rental_ID=?',(unassign_car,))
+        self.connection.commit()
+        print('Successfully unassigned car')
 
 
 

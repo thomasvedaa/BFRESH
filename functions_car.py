@@ -12,14 +12,14 @@ class Cars:
     def add_car_to_database(self):
         print("Add a car")
         reg_nr = input("Enter registration number: ")
-        state = input("Enter state of the car. From 1 to 10: ")
+        brand = input("Enter brand of the car: ")
+        model = input("Enter model of the car: ")
         price = input("Enter estimated price of the car (in USD): ")
-        brand = input("Enter brand: ")
-        self.cursor.execute('INSERT INTO Car (Registration_number,State,Price_range,Brand) VALUES (?,?,?,?)',
-                            (reg_nr, state, price, brand))
+        self.cursor.execute('INSERT INTO Car (Registration_number,Brand,Model,Price) VALUES (?,?,?,?)',
+                            (reg_nr, brand, model, price))
         self.connection.commit()
         car_id = self.cursor.lastrowid
-        print(f'Added car: Id: {car_id}, registration number: {reg_nr}, price: ${price}, brand: {brand}\n')
+        print(f'Added car: Id: {car_id}, registration number: {reg_nr}, brand: {brand} model: {model}, price: ${price}\n')
 
     def edit_car(self):
         car_id = int(input("Give a valid Car ID to search after: "))
@@ -30,17 +30,17 @@ class Cars:
             return
         else:
             print(
-                f'Found car: Id: {car[0]}, registration number: {car[1]}, state of car: {car[2]},  price: ${car[3]}, brand: {car[4]}')
+                f'Found car: Id: {car[0]}, registration number: {car[1]},brand: {car[2]},  model: {car[3]}, price: ${car[4]}')
             reg_nr = input("Update registration number: ")
-            state = input("Update state of the car. From 1 to 10: ")
+            brand = input("Update brand of the car.")
+            model = input("Update model of the car: ")
             price = input("Update estimated price of the car (in USD): ")
-            brand = input("Update brand: ")
             self.cursor.execute(
-                'UPDATE Car SET Registration_number = ?, State = ?, Price_range = ?, Brand = ? WHERE Car_ID = ?',
-                (reg_nr, state, price, brand, car_id,))
+                'UPDATE Car SET Registration_number = ?, Brand = ?, Model = ?, Price = ? WHERE Car_ID = ?',
+                (reg_nr, brand, model, price, car_id,))
             self.connection.commit()
             print(
-                f'Updated car: Id: {car_id},state of car: {state} registration number: {reg_nr}, price: {price}, brand: {brand}\n')
+                f'Updated car: Id: {car_id},state of car: {brand} registration number: {reg_nr}, model: {model}, brand: {price}\n')
 
     def remove_car(self):
         car_id = int(input("Which car do you want to remove?\n"))
