@@ -48,7 +48,6 @@ class Database_setup:
     def close_database(self):
         self.connection.close()
 
-
     def database_menu(self):
         choice=int(input('1. Start database\n2. Close database'))
 
