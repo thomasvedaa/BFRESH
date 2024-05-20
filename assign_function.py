@@ -66,19 +66,21 @@ class Assign_car:
         registration_number = input('Enter registration number of the car you want to unassign')
         current_date = datetime.datetime.now()
         self.cursor.execute('SELECT * '
-                            'FROM Active_rental, Car'
+                            'FROM Active_rental, Car '
                             'WHERE Car.Registration_number=? '
                             'AND Car.Car_ID=Active_rental.Car_ID '
                             'AND Active_rental.End_date < ?', (registration_number, current_date,))
         active_rentals = self.cursor.fetchall()
-        for rentals in active_rentals:
-            print(
-                f'Rental ID: {rentals[0]} Car ID:{rentals[1]} Customer ID: {rentals[2]} Start date: {rentals[3]} End date{rentals[4]}')
+        if not active_rentals:
+            print('No active rentals with chosen registration number')
+        else:
+            for rentals in active_rentals:
+                print(f'Rental ID: {rentals[0]} Car ID:{rentals[1]} Customer ID: {rentals[2]} Start date: {rentals[3]} End date{rentals[4]}')
 
-        unassign_car = int(input('Enter the Rental ID of the car you want to unassign'))
-        self.cursor.execute('DELETE FROM Active_rental WHERE Rental_ID=?', (unassign_car,))
-        self.connection.commit()
-        print('Successfully unassigned car')
+            unassign_car = int(input('Enter the Rental ID of the car you want to unassign'))
+            self.cursor.execute('DELETE FROM Active_rental WHERE Rental_ID=?', (unassign_car,))
+            self.connection.commit()
+            print('Successfully unassigned car')
 
     def assign_menu(self):
         while True:
