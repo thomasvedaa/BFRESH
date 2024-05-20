@@ -24,7 +24,7 @@ class Main_menu:
             if choice==5:
                 csv_export.choose_export()
             if choice==6:
-                pass
+                csv_export.choose_import()
             if choice==7:
                 break
 
