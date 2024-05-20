@@ -3,6 +3,7 @@ from functions_car import *
 from functions_stats import *
 from assign_function import *
 from csv_database import *
+from database_setup import *
 
 db = 'rental_database.sqlite'
 
@@ -10,7 +11,7 @@ class Main_menu:
     def menu(self):
         while True:
             print("1. Add/Modify car\n2. Add/Modify customer\n3. Assign car to customer\n4. Show statistics\n"
-                  "5. Export all information to a file\n6. Import all information from a file\n7. Exit")
+                  "5. Export all information to a file\n6. Import all information from a file\n7. Database options\n8. Exit")
             choice= int(input())
 
             if choice==1:
@@ -26,6 +27,8 @@ class Main_menu:
             if choice==6:
                 csv_export.choose_import()
             if choice==7:
+                database.database_menu()
+            if choice==8:
                 break
 
 
@@ -37,5 +40,6 @@ stats=Stats(db)
 assign_car=Assign_car(db)
 main=Main_menu()
 csv_export=Csv_database(db)
+database=Database_setup(db)
 
 

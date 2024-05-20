@@ -50,9 +50,12 @@ class Csv_database:
             reader = csv.reader(csv_file)
             data = list(reader)
 
+
+            # used https://stackoverflow.com/a/21261532/25128641 to solve the problem, needed the headers
+            # to become columns in the database
             columns = data[0]
-            values = ', '.join('?' * len(columns))
-            column_names = ', '.join(columns)
+            values = ','.join('?'*len(columns))
+            column_names = ','.join(columns)
 
             for x in data[1:]:
                 insert = f'INSERT INTO {self.table}({column_names}) VALUES({values})'
