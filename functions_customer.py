@@ -12,7 +12,8 @@ class Customers:
         name = input("Enter customer name: ")
         adress = input("Enter customer address: ")
         telephone_number = int(input("Enter phone number: "))
-        self.cursor.execute('INSERT INTO Customer (Social_security_number,Name,Adress,Telephone_number) VALUES (?,?,?,?)',(social_security_number, name, adress, telephone_number))
+        self.cursor.execute('INSERT INTO Customer (Social_security_number,Name,Adress,Telephone_number) '
+                            'VALUES (?,?,?,?)',(social_security_number, name, adress, telephone_number))
         self.connection.commit()
         customer_id=self.cursor.lastrowid
         print(f'Added customer: Id: {customer_id}, name: {name}, adress: {adress}, phone number: {telephone_number}\n')
@@ -31,7 +32,8 @@ class Customers:
             name = input("Update name: ")
             adress = input("Update address: ")
             phone_number = input("Update phone number: ")
-            self.cursor.execute('UPDATE Customer SET Social_security_number = ?, Name = ?, Adress = ?, Telephone_number = ? WHERE Customer_ID = ?',
+            self.cursor.execute('UPDATE Customer SET Social_security_number = ?, Name = ?, Adress = ?, '
+                                'Telephone_number = ? WHERE Customer_ID = ?',
                            (social_number, name, adress, phone_number, customer_id,))
             self.connection.commit()
             print(

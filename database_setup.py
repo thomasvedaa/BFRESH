@@ -5,7 +5,7 @@ class Database_setup:
         self.connection = sqlite3.connect(db)
         self.cursor = self.connection.cursor()
 
-    def start_database(self):
+    def create_database(self):
         self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS Customer
             (
@@ -43,17 +43,3 @@ class Database_setup:
             );
         ''')
         self.connection.commit()
-
-
-    def close_database(self):
-        self.connection.close()
-
-    def database_menu(self):
-        choice=int(input('1. Start database\n2. Close database'))
-
-        if choice==1:
-            self.start_database()
-        elif choice==2:
-            self.close_database()
-        else:
-            print('Invalid number')

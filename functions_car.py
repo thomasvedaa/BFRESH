@@ -32,7 +32,7 @@ class Cars:
             print(
                 f'Found car: Id: {car[0]}, registration number: {car[1]},brand: {car[2]},  model: {car[3]}, price: ${car[4]}')
             reg_nr = input("Update registration number: ")
-            brand = input("Update brand of the car.")
+            brand = input("Update brand of the car:")
             model = input("Update model of the car: ")
             price = input("Update estimated price of the car (in USD): ")
             self.cursor.execute(
