@@ -20,6 +20,8 @@ class Csv_database:
             csvwriter.writerow(columns)
             csvwriter.writerows(data)
 
+        print(f'{self.table}.csv created successfully, information exported!')
+
     def choose_export(self):
         while True:
             export_choice = int(input('Choose which table to export.\n'
@@ -56,6 +58,7 @@ class Csv_database:
                 insert = f'INSERT INTO {self.table}({column_names}) VALUES({values})'
                 self.cursor.execute(insert, x)
                 self.connection.commit()
+            print("Application committed successfully, imported information to database")
 
     def choose_import(self):
 
