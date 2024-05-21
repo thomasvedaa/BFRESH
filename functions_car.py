@@ -22,7 +22,7 @@ class Cars:
         print(f'Added car: Id: {car_id}, registration number: {reg_nr}, brand: {brand}, model: {model}, price: ${price}\n')
 
     def edit_car(self):
-        reg_nr = input('Search after the car you want to edit: ')
+        reg_nr = input('Search after the registration number of the car you want to edit: ')
         self.cursor.execute('SELECT * FROM Car WHERE Registration_number = ?', (reg_nr,))
         car = self.cursor.fetchone()
         if car is None:
@@ -37,7 +37,7 @@ class Cars:
             price = input("Update estimated price of the car (in USD): ")
             self.cursor.execute(
                 'UPDATE Car SET Registration_number = ?, Brand = ?, Model = ?, Price = ? WHERE Car_ID = ?',
-                (reg_nr, brand, model, price, reg_nr,))
+                (reg_nr, brand, model, price, car[0],))
             self.connection.commit()
             print(
                 f'Updated car: Id: {car[0]}, registration number: {reg_nr}, brand: {brand}, model: {model}, price: ${price}\n')
