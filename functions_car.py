@@ -43,7 +43,13 @@ class Cars:
                 f'Updated car: Id: {car_id},state of car: {brand} registration number: {reg_nr}, model: {model}, brand: {price}\n')
 
     def remove_car(self):
-        car_id = int(input("Which car do you want to remove?\n"))
+        reg_nr = input('Search after the car you want to delete: ')
+        self.cursor.execute('SELECT * FROM Car WHERE Registration_number = ?', (reg_nr,))
+        carsearch = self.cursor.fetchall()
+        for car in carsearch:
+            print(
+                f'Car ID: {car[0]}, registration number: {car[1]}, brand: {car[2]}, model: {car[3]}, price: ${car[4]}')
+        car_id = int(input("Is this the car you want to remove (Remove by ID)?\n"))
         self.cursor.execute('DELETE FROM Car WHERE Car_ID = ?', (car_id,))
         self.connection.commit()
         if self.cursor.rowcount > 0:
