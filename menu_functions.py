@@ -25,9 +25,9 @@ class Main_menu:
             if choice == 4:
                 stats.show_stats_menu()
             if choice == 5:
-                csv_export.choose_export()
+                csv_converter.choose_export()
             if choice == 6:
-                csv_export.choose_import()
+                csv_converter.choose_import()
             if choice == 7:
                 database.create_database()
             if choice == 8:
@@ -39,5 +39,5 @@ customer_menu = Customers(db)
 stats = Stats(db)
 assign_car = Assign_car(db)
 main = Main_menu()
-csv_export = Csv_database(db)
+csv_converter    = Csv_database(db)
 database = Database_setup(db)
