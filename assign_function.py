@@ -38,7 +38,7 @@ class Assign_car:
 
         for car in cars:
             print(
-                f'Car: Id: {car[0]}, registration number: {car[1]}, state of car: {car[2]},  price: ${car[3]}, brand: {car[4]}')
+                f'Car: Id: {car[0]}, registration number: {car[1]}, brand: {car[2]},  model: {car[3]}, price: ${car[4]}')
 
         # car choice
         car_choice = int(input('Enter ID of the car you want'))

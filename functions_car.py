@@ -22,8 +22,8 @@ class Cars:
         print(f'Added car: Id: {car_id}, registration number: {reg_nr}, brand: {brand}, model: {model}, price: ${price}\n')
 
     def edit_car(self):
-        car_id = int(input("Give a valid Car ID to search after: "))
-        self.cursor.execute('SELECT * FROM Car WHERE Car_ID = ?', (car_id,))
+        reg_nr = input('Search after the car you want to edit: ')
+        self.cursor.execute('SELECT * FROM Car WHERE Registration_number = ?', (reg_nr,))
         car = self.cursor.fetchone()
         if car is None:
             print("No car with that ID")
@@ -37,10 +37,10 @@ class Cars:
             price = input("Update estimated price of the car (in USD): ")
             self.cursor.execute(
                 'UPDATE Car SET Registration_number = ?, Brand = ?, Model = ?, Price = ? WHERE Car_ID = ?',
-                (reg_nr, brand, model, price, car_id,))
+                (reg_nr, brand, model, price, reg_nr,))
             self.connection.commit()
             print(
-                f'Updated car: Id: {car_id},state of car: {brand} registration number: {reg_nr}, model: {model}, brand: {price}\n')
+                f'Updated car: Id: {car[0]}, registration number: {reg_nr}, brand: {brand}, model: {model}, price: ${price}\n')
 
     def remove_car(self):
         reg_nr = input('Search after the car you want to delete: ')
