@@ -12,7 +12,7 @@ class Main_menu:
     def menu(self):
         while True:
             print("1. Add/Modify car\n2. Add/Modify customer\n3. Assign car to customer\n4. Show statistics\n"
-                  "5. Export all information to a file\n6. Import all information from a file\n7. Database options"
+                  "5. Export all information to a file\n6. Import all information from a file\n7. Create database"
                   "\n8. Exit")
             choice = int(input())
 
