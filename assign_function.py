@@ -48,6 +48,13 @@ class Assign_car:
         chosen_car = self.cursor.fetchone()
         car_id = chosen_car[0]
 
+        current_date=datetime.datetime.now().strftime('%d-%m-%Y')
+        self.cursor.execute('SELECT * FROM Active_rental WHERE Car_ID=? AND End_date >= ?', (car_id, current_date,))
+        active_rental=self.cursor.fetchone()
+        if active_rental:
+            print('This car is currently being rented')
+            return
+
         # Calculate the start and end date
         # Used https://www.w3schools.com/python/python_datetime.asp for guidance on timedate
         days_of_rental = int(input('Enter how many days you would like to rent the car: '))
