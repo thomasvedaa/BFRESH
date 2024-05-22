@@ -48,7 +48,7 @@ class Assign_car:
         chosen_car = self.cursor.fetchone()
         car_id = chosen_car[0]
 
-        current_date=datetime.datetime.now().strftime('%d-%m-%Y')
+        current_date=datetime.datetime.now().strftime('%Y-%m-%d')
         self.cursor.execute('SELECT * FROM Active_rental WHERE Car_ID=? AND End_date >= ?', (car_id, current_date,))
         active_rental=self.cursor.fetchone()
         if active_rental:
@@ -61,8 +61,8 @@ class Assign_car:
         start_date = datetime.datetime.now()
         end_date = start_date + datetime.timedelta(days=days_of_rental)
 
-        start_date = start_date.strftime('%d-%m-%Y')
-        end_date = end_date.strftime('%d-%m-%Y')
+        start_date = start_date.strftime('%Y-%m-%d')
+        end_date = end_date.strftime('%Y-%m-%d')
 
         self.cursor.execute('INSERT INTO Active_rental (Car_ID, Customer_ID, Start_date, End_date) '
                             'VALUES(?,?,?,?)', (car_id, customer_id, start_date, end_date,))

@@ -19,15 +19,15 @@ class Stats:
 
     def count_active_rentals(self):
         current_date = datetime.now().strftime('%Y-%m-%d')
-        self.cursor.execute('SELECT COUNT(Rental_ID) FROM Active_rental WHERE End_date <= ? ',(current_date,))
-        rental_count=self.cursor.fetchone()
-        print(f'There are {rental_count[0]} active rentals')
+        self.cursor.execute('SELECT COUNT(Rental_ID) FROM Active_rental WHERE End_date >= ? ',(current_date,))
+        rental_count=self.cursor.fetchone()[0]
+        print(f'There are {rental_count} active rentals')
 
     def count_completed_rentals(self):
         current_date = datetime.now().strftime('%Y-%m-%d')
-        self.cursor.execute('SELECT COUNT(Rental_ID) FROM Active_rental WHERE End_date > ?', (current_date,))
-        completed_rentals = self.cursor.fetchone()
-        print(f'There are {completed_rentals[0]} completed rentals')
+        self.cursor.execute('SELECT COUNT(Rental_ID) FROM Active_rental WHERE End_date < ?', (current_date,))
+        completed_rentals = self.cursor.fetchone()[0]
+        print(f'There are {completed_rentals} completed rentals')
     def show_stats_menu(self):
         while True:
             stats_choice = int(input(
