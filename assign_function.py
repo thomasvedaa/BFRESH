@@ -29,7 +29,7 @@ class Assign_car:
         customer_id = chosen_customer[0]
 
         # car search
-        car_brand_choice = input('Enter the brand of the car you want')
+        car_brand_choice = input('Enter the brand of the car you want ')
         self.cursor.execute('SELECT * FROM Car WHERE Brand LIKE ?', ('%' + car_brand_choice + '%',))
         cars = self.cursor.fetchall()
         if not cars:
@@ -41,7 +41,7 @@ class Assign_car:
                 f'Car: Id: {car[0]}, registration number: {car[1]}, brand: {car[2]},  model: {car[3]}, price: ${car[4]}')
 
         # car choice
-        car_choice = int(input('Enter ID of the car you want'))
+        car_choice = int(input('Enter ID of the car you want '))
         self.cursor.execute('SELECT *'
                             'FROM Car '
                             'WHERE Car_ID=? ', (car_choice,))
