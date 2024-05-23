@@ -26,7 +26,7 @@ class Cars:
         self.cursor.execute('SELECT * FROM Car WHERE Registration_number = ?', (reg_nr,))
         car = self.cursor.fetchone()
         if car is None:
-            print("No car with that ID")
+            print("No car with that registration")
             return
         else:
             print(
@@ -43,19 +43,26 @@ class Cars:
                 f'Updated car: Id: {car[0]}, registration number: {reg_nr}, brand: {brand}, model: {model}, price: ${price}\n')
 
     def remove_car(self):
-        reg_nr = input('Search after the car you want to delete: ')
-        self.cursor.execute('SELECT * FROM Car WHERE Registration_number = ?', (reg_nr,))
+        brand = input('Search after the car you want to delete: (search by brand first) ')
+        self.cursor.execute('SELECT * FROM Car WHERE brand = ?', (brand,))
         carsearch = self.cursor.fetchall()
-        for car in carsearch:
-            print(
-                f'Car ID: {car[0]}, registration number: {car[1]}, brand: {car[2]}, model: {car[3]}, price: ${car[4]}')
-        car_id = int(input("Is this the car you want to remove (Remove by ID)?\n"))
-        self.cursor.execute('DELETE FROM Car WHERE Car_ID = ?', (car_id,))
-        self.connection.commit()
-        if self.cursor.rowcount > 0:
-            print(f'Car with ID {car_id} was removed\n')
+        self.cursor.execute('SELECT brand FROM Car WHERE brand = ?', (brand,))
+        brands = self.cursor.fetchone()
+
+        print("Search results:")
+        if brands is None:
+            print('Car not found, retry')
+            return
         else:
-            print('Car not found\n')
+            for car in carsearch:
+                print(f'Car ID: {car[0]}, registration number: {car[1]}, brand: {car[2]}, model: {car[3]}, price: ${car[4]}')
+            car_id = int(input("Choose the car you want to remove (Remove by ID)?\n"))
+            self.cursor.execute('DELETE FROM Car WHERE Car_ID = ?', (car_id,))
+            self.connection.commit()
+            if self.cursor.rowcount > 0:
+                print(f'Car with ID {car_id} was removed\n')
+            else:
+                print('Car not found\n')
 
     def modify_car_menu(self):
         while True:
