@@ -43,14 +43,14 @@ class Cars:
                 f'Updated car: Id: {car[0]}, registration number: {reg_nr}, brand: {brand}, model: {model}, price: ${price}\n')
 
     def remove_car(self):
-        brand = input('Search after the car you want to delete: (search by brand first) ')
-        self.cursor.execute('SELECT * FROM Car WHERE brand = ?', (brand,))
+        reg_nr = input('Search after the car you want to delete: (search by registration number first) ')
+        self.cursor.execute('SELECT * FROM Car WHERE Registration_number = ?', (reg_nr,))
         carsearch = self.cursor.fetchall()
-        self.cursor.execute('SELECT brand FROM Car WHERE brand = ?', (brand,))
-        brands = self.cursor.fetchone()
+        self.cursor.execute('SELECT Registration_number FROM Car WHERE Registration_number = ?', (reg_nr,))
+        reg_numbers = self.cursor.fetchone()
 
         print("Search results:")
-        if brands is None:
+        if reg_numbers is None:
             print('Car not found, retry')
             return
         else:
